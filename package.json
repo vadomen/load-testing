@@ -1,0 +1,68 @@
+{
+  "name": "k6-load-testing-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for k6 loading tests",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "check-types": "tsc",
+    "check-types:watch": "tsc --watch",
+    "build:prod": "NODE_ENV=prod webpack && npm run build:tails && npm run build:fangs",
+    "build:stage": "NODE_ENV=stage webpack && npm run build:tails && npm run build:fangs",
+    "build:dev": "NODE_ENV=dev webpack && npm run build:tails && npm run build:fangs",
+    "build:tails": "mkdir ./dist/tails && mv ./dist/tails-* ./dist/tails/",
+    "build:fangs": "mkdir ./dist/fangs && mv ./dist/fangs-* ./dist/fangs/",
+    "build": "webpack",
+    "monitoring:up": "docker-compose up -d prometheus grafana",
+
+
+    "test-tails": "docker-compose run --rm k6-local run /scripts/tails/tails-test.js",
+    "test-tails-alligator": "docker-compose run --rm k6-local run /scripts/tails/tails-alligator-test.js",
+    "test-tails-caiman": "docker-compose run --rm k6-local run /scripts/tails/tails-caiman-test.js",
+    "test-tails:monitoring": "docker-compose run --rm k6 run /scripts/tails/tails-test.js",
+    "test-tails-alligator:monitoring": "docker-compose run --rm k6 run /scripts/tails/tails-alligator-test.js",
+    "test-tails-caiman:monitoring": "docker-compose run --rm k6 run /scripts/tails/tails-caiman-test.js",
+
+
+    "test-fangs": "docker-compose run --rm k6-local run /scripts/fangs/fangs-test.js",
+    "test-fangs-alligator": "docker-compose run --rm k6-local run /scripts/fangs/fangs-alligator-test.js",
+    "test-fangs-caiman": "docker-compose run --rm k6-local run /scripts/fangs/fangs-caiman-test.js",
+    "test-fangs:monitoring": "docker-compose run --rm k6 run /scripts/fangs/fangs-test.js",
+    "test-fangs-alligator:monitoring": "docker-compose run --rm k6 run /scripts/fangs/fangs-alligator-test.js",
+    "test-fangs-caiman:monitoring": "docker-compose run --rm k6 run /scripts/fangs/fangs-caiman-test.js",
+
+    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "lint-fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
+    "postinstall": "curl https://jslib.k6.io/k6chaijs/4.3.4.1/index.js -o ./src/utils/k6chaijs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.uklon.com.ua/vadym.pospielov/k6_poc.git"
+  },
+  "author": "Vadym Pospielov",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/plugin-proposal-class-properties": "7.13.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.13.8",
+    "@babel/preset-env": "7.13.15",
+    "@babel/preset-typescript": "7.13.0",
+    "@types/k6": "~0.37.0",
+    "@types/webpack": "5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "babel-loader": "8.2.2",
+    "clean-webpack-plugin": "4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "dotenv-webpack": "^7.1.0",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "typescript": "4.2.4",
+    "webpack": "5.35.1",
+    "webpack-cli": "4.6.0",
+    "webpack-glob-entries": "^1.0.1"
+  }
+}

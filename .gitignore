@@ -1,0 +1,7 @@
+node_modules
+.idea
+.env_prod
+.env_dev
+.env_stage
+dist
+/src/utils/k6chaijs.js
