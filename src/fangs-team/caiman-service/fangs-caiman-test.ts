@@ -8,6 +8,12 @@ import { auth } from './config';
 
 export const options = {
   ...fangsOptions,
+  stages: [
+    { duration: '20s', target: 1 },
+    { duration: '10m', target: 10 },
+    { duration: '5m', target: 50 },
+    { duration: '2m', target: 0 },
+  ],
 };
 
 export function setup(): SetupPayloadModel {
