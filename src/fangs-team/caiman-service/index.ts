@@ -4,6 +4,5 @@ import { getMyCaimans } from './http';
 
 export const testCaimanService = (payload: SetupPayloadModel) => {
   const { serviceCaimanBaseUrl, headers } = payload;
-
   checkResponse(getMyCaimans(serviceCaimanBaseUrl, headers), 'Test caiman service');
 };

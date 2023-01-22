@@ -14,14 +14,14 @@ export const options = {
 
 export function setup() {
   return {
-    meConfig: fangsSetup(signIn(auth)),
+    caimanConfig: fangsSetup(signIn(auth)),
     common: fangsSetup(),
   };
 }
 
-export default ({ common, me }): void => {
+export default ({ common, caimanConfig }): void => {
   testAlligatorService(common);
-  testCaimanService(me);
+  testCaimanService(caimanConfig);
 };
 
 export function teardown(payload: SetupPayloadModel): void {
