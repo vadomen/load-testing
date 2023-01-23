@@ -43,6 +43,9 @@ services:
       - K6_OUT=output-prometheus-remote
     volumes:
       - ./dist:/scripts
+    depends_on:
+      - prometheus
+      - grafana
 
   k6-local:
     image: grafana/k6:latest
