@@ -16,23 +16,19 @@
     "build:fangs": "mkdir ./dist/fangs && mv ./dist/fangs-* ./dist/fangs/",
     "build": "webpack",
     "monitoring:up": "docker-compose up -d prometheus grafana",
-
-
+    "monitoring:open": "open http://localhost:9090 && open http://localhost:3000",
     "test-tails": "docker-compose run --rm k6-local run /scripts/tails/tails-test.js",
     "test-tails-alligator": "docker-compose run --rm k6-local run /scripts/tails/tails-alligator-test.js",
     "test-tails-caiman": "docker-compose run --rm k6-local run /scripts/tails/tails-caiman-test.js",
     "test-tails:monitoring": "docker-compose run --rm k6 run /scripts/tails/tails-test.js",
     "test-tails-alligator:monitoring": "docker-compose run --rm k6 run /scripts/tails/tails-alligator-test.js",
     "test-tails-caiman:monitoring": "docker-compose run --rm k6 run /scripts/tails/tails-caiman-test.js",
-
-
     "test-fangs": "docker-compose run --rm k6-local run /scripts/fangs/fangs-test.js",
     "test-fangs-alligator": "docker-compose run --rm k6-local run /scripts/fangs/fangs-alligator-test.js",
     "test-fangs-caiman": "docker-compose run --rm k6-local run /scripts/fangs/fangs-caiman-test.js",
     "test-fangs:monitoring": "docker-compose run --rm k6 run /scripts/fangs/fangs-test.js",
     "test-fangs-alligator:monitoring": "docker-compose run --rm k6 run /scripts/fangs/fangs-alligator-test.js",
     "test-fangs-caiman:monitoring": "docker-compose run --rm k6 run /scripts/fangs/fangs-caiman-test.js",
-
     "lint": "eslint \"./src/**/*.{ts,tsx}\"",
     "lint-fix": "eslint \"./src/**/*.{ts,tsx}\" --fix",
     "postinstall": "curl https://jslib.k6.io/k6chaijs/4.3.4.1/index.js -o ./src/utils/k6chaijs.js"
